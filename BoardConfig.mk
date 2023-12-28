@@ -13,6 +13,7 @@ ALLOW_MISSING_DEPENDENCIES := true
 # A/B
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
+    boot \
     system \
     system_ext \
     product \
@@ -136,3 +137,25 @@ TW_FRAMERATE := 60
 
 # Maintainer/Version
 include $(DEVICE_PATH)/version.mk
+
+# Slightly overprovision dynamic partitions with 50MiB to
+# allow on-device file editing
+BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 52428800
+BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 52428800
+BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 52428800
+
+#super
+#PRODUCT_USE_DYNAMIC_PARTITIONS := true
+#PRODUCT_BUILD_SUPER_PARTITION := true
+
+#ENABLE_CPUSETS := true
+#ENABLE_SCHEDBOOST := true
+#TARGET_USES_UEFI := true
+
+# Partitions (listed in the file) to be wiped under recovery.
+TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery.wipe
+
+# Extras
+BOARD_PROVIDES_GPTUTILS := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+TW_USE_LEDS_HAPTICS := true
