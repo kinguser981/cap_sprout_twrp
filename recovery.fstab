@@ -40,3 +40,8 @@ vendor                                                  /vendor                 
 /dev/block/by-name/metadata                  /metadata                 ext4    noatime,nosuid,nodev,discard                         wait,check,formattable,wrappedkey,first_stage_mount
 /dev/block/bootdevice/by-name/userdata                  /data                     f2fs    noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065,fsync_mode=nobarrier,inlinecrypt    latemount,wait,check,formattable,fileencryption=ice,wrappedkey,keydirectory=/metadata/vold/metadata_encryption,quota,reservedsize=128M,checkpoint=fs
 /dev/block/bootdevice/by-name/misc                      /misc              emmc    defaults                                             defaults
+/vendor_image       emmc      /dev/block/mapper/vendor                       flags=backup=0;flashimg=1;display="Vendor-Image"
+/system_image       emmc      /dev/block/mapper/system                       flags=backup=1;flashimg=1;display="System-Image"
+/product_image      emmc      /dev/block/mapper/product                      flags=backup=0;flashimg=1;display="Product-Image"
+/odm_image          emmc      /dev/block/mapper/odm                          flags=backup=0;flashimg=1;display="Odm-Image"
+/system_ext         emmc      system_ext                                     flags=display="system_ext";logical;slotselect;backup=1;flashimg=1
