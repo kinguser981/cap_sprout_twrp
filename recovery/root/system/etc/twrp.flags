@@ -29,15 +29,13 @@
 
 #mount-point       fstype       device                  [device2]             [length=]
 /boot               emmc      /dev/block/bootdevice/by-name/boot             flags=display="Boot";slotselect;flashimg=1
-/system             ext4      system                                     flags=display=system;logical;slotselect
-/system_ext         ext4      system_ext                                 flags=display=system_ext;logical;slotselect
-/product            ext4      product                                    flags=display=product;logical;slotselect
 /recovery           emmc      /dev/block/bootdevice/by-name/recovery         flags=display="Recovery";slotselect;backup=1;flashimg=1
 /dtbo               emmc      /dev/block/bootdevice/by-name/dtbo             flags=display="DTBO";slotselect;backup=1;flashimg=1
-/system             emmc      /dev/block/bootdevice/by-name/system_a         flags=display=system;logical;slotselect;backup=1;flashimg
-/system_ext         emmc      system_ext                                 flags=display=system_ext;logical;slotselect;backup=1;flashimg
-/product            emmc      product                                    flags=display=product;logical;slotselect;backup=1;flashimg
-/vendor             emmc      /dev/block/bootdevice/by-name/vendor_a     flags=display=vendor;logical;slotselect;backup=1;flashimg
+/vendor_image       emmc      /dev/block/mapper/vendor                       flags=backup=0;flashimg=1;display="Vendor-Image"
+/system_image       emmc      /dev/block/mapper/system                       flags=backup=1;flashimg=1;display="System-Image"
+/product_image      emmc      /dev/block/mapper/product                      flags=backup=0;flashimg=1;display="Product-Image"
+/odm_image          emmc      /dev/block/mapper/odm                          flags=backup=0;flashimg=1;display="Odm-Image"
+/system_ext         emmc      system_ext                                     flags=display="system_ext";logical;slotselect;backup=1;flashimg=1
 
 # Verified Boot Partitions
 /vbmeta                	emmc    /dev/block/bootdevice/by-name/vbmeta                               flags=display="VBMeta";slotselect;backup=1;flashimg=1
