@@ -138,6 +138,11 @@ TW_FRAMERATE := 60
 # Maintainer/Version
 include $(DEVICE_PATH)/version.mk
 
+# tell update_engine to not change dynamic partition table during updates
+# needed since our qti_dynamic_partitions does not include
+# vendor and odm and we also dont want to AB update them
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
+
 # Slightly overprovision dynamic partitions with 50MiB to
 # allow on-device file editing
 BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 52428800
@@ -145,8 +150,8 @@ BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 52428800
 BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 52428800
 
 #super
-#PRODUCT_USE_DYNAMIC_PARTITIONS := true
-#PRODUCT_BUILD_SUPER_PARTITION := true
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_BUILD_SUPER_PARTITION := true
 
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
