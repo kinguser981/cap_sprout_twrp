@@ -1,2 +1,2 @@
 # To be included in BoardConfig.mk
-TW_DEVICE_VERSION := Test 1
+TW_DEVICE_VERSION := Nokia 5.3
