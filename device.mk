@@ -22,9 +22,9 @@ AB_OTA_POSTINSTALL_CONFIG += \
 
 # API/SDK Version
 PRODUCT_SHIPPING_API_LEVEL := 29
-BOARD_SHIPPING_API_LEVEL := 29
-BOARD_API_LEVEL := 29
-SHIPPING_API_LEVEL := 29
+BOARD_SHIPPING_API_LEVEL := $(PRODUCT_SHIPPING_API_LEVEL)
+BOARD_API_LEVEL := $(PRODUCT_SHIPPING_API_LEVEL)
+SHIPPING_API_LEVEL := 2$(PRODUCT_SHIPPING_API_LEVEL)
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
@@ -45,10 +45,6 @@ PRODUCT_PACKAGES += \
     sg_write_buffer \
     f2fs_io \
     check_f2fs
-
-# Userdata checkpoint
-PRODUCT_PACKAGES += \
-    checkpoint_gc
 
 # Fastboot/D HAL
 PRODUCT_PACKAGES += \
@@ -82,13 +78,21 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so
 
-# Update Engine
+# Userdata checkpoint
+PRODUCT_PACKAGES += \
+    checkpoint_gc
+
+# Update Script
 PRODUCT_PACKAGES += \
     otapreopt_script \
     cppreopts.sh \
+
+# Update Engine
+PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
 
+# Update Engine Debug
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
