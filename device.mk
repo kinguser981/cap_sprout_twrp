@@ -7,6 +7,12 @@
 
 LOCAL_PATH := device/nokia/cap_sprout
 
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := current
+
+# API level
+PRODUCT_SHIPPING_API_LEVEL := 34
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
